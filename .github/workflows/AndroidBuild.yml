@@ -1,0 +1,32 @@
+name: Android Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.0
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8
+          distribution: 'adopt'
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Generate APK
+        run: ./gradlew assembleDebug
+        # run: ./gradlew assembleRelease
+
+      - name : Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: Blackcoffer.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
