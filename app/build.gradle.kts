@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "org.eu.noobshubham.blackcoffer"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "org.eu.noobshubham.blackcoffer"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
